@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #eff0ff;
+  --color-white: #fff;
+  --color-header: #494964;
+  --color-active: #6366f1;
+  --color-text: #f8f8f8;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--color-bg);
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: var(--color-white);
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion {
+  --header-height: 42.5px;
+  display: grid;
+  grid-template-rows: var(--header-height) 0fr;
+  transition: grid-template-rows 500ms ease-in-out;
+}
+
+.accordion.open {
+  grid-template-rows: var(--header-height) 1fr;
+}
+
+.accordion .header {
+  background: var(--color-header);
+  color: var(--color-text);
+  padding: 10px;
+  border-radius: 0.25rem;
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  transition: background 500ms ease-in-out;
+  cursor: pointer;
+}
+
+.accordion.open .header {
+  background: var(--color-active);
+}
+
+.accordion .header .icon {
+  fill: var(--color-text);
+  transition: transform 500ms ease-in-out;
+}
+
+.accordion.open .header .icon {
+  transform: rotate(180deg);
+}
+
+.accordion .content {
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.accordion.open .content {
+  margin-top: 0.5rem;
+}
