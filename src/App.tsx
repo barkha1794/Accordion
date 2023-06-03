@@ -1,60 +1,56 @@
 import { Accordion } from "./components/Accordion";
-import { useState } from "react";
+
+const roadMap = [
+  {
+    heading: "Learn Html",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ipsa veniam iste, ad, earum autem, expedita quaerat tenetur nulla aspernatur eius voluptas consequatur quia. Suscipit nihil voluptas beatae ratione esse et harum cumque laboriosam, illo labore blanditiis reiciendis ab delectus consectetur deserunt qui nobis rem. A rem iusto ut unde!",
+  },
+
+  {
+    heading: "Learn CSS",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, reprehenderit quo dolore culpa iusto perferendis earum inventore, facere repudiandae vel excepturi maxime veniam? Sit temporibus neque doloribus enim adipisci iusto nam, facilis hic soluta, odio dolorum praesentium possimus quidem magnam atque id aliquid pariatur quis explicabo laborum ipsa illo incidunt?",
+  },
+  {
+    heading: "Learn JAVA",
+    content:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic ad quia natus animi voluptatibus exercitationem dolorem quis autem eaque consequuntur possimus qui harum, architecto beatae iure nostrum quibusdam, porro error magnam delectus. Itaque ratione illum cupiditate reprehenderit debitis nam nemo sunt, sed voluptas dignissimos mollitia velit unde perspiciatis? Ratione, enim.",
+  },
+  {
+    heading: "Learn C++",
+    content:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse alias voluptatem facere omnis. Laboriosam esse, atque eligendi ullam, minima minus laudantium temporibus omnis molestias beatae dolor adipisci, optio deleniti sequi a explicabo necessitatibus dolore. Exercitationem officia quibusdam temporibus sunt? Doloremque est labore nam officia dignissimos accusantium porro tempora ipsum id!",
+  },
+];
 
 const App = () => {
-  const [itemOpen, setItemOpen] = useState(0);
-
   return (
-    <article className="container stack">
-      <Accordion
-        heading="Learn Html"
-        open={itemOpen === 1}
-        toggle={() => setItemOpen((old) => (old === 1 ? 0 : 1))}
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit deserunt
-        sint quae laborum ipsum aut corrupti a! Sequi unde repellat maiores
-        necessitatibus laborum iste vero. Facere vero id maxime odio corporis!
-        Vero accusantium debitis ab? Quibusdam, perferendis eveniet! Consectetur
-        commodi, iure doloremque ea aperiam accusantium animi? Nobis placeat
-        similique distinctio?
-      </Accordion>
-      <Accordion
-        heading="Learn CSS"
-        open={itemOpen === 2}
-        toggle={() => setItemOpen((old) => (old === 2 ? 0 : 2))}
-      >
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam iure
-        vero nostrum dignissimos dolor recusandae deserunt incidunt inventore
-        perferendis? Asperiores animi impedit modi obcaecati sapiente
-        repellendus excepturi earum voluptatum eius quis? Harum, sed provident
-        ipsa dolorum ut autem cumque ipsam non beatae debitis, voluptatum
-        expedita! Aliquam cupiditate amet eius est.
-      </Accordion>
-      <Accordion
-        heading="Learn JAVA"
-        open={itemOpen === 3}
-        toggle={() => setItemOpen((old) => (old === 3 ? 0 : 3))}
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quasi?
-        Nobis at suscipit non impedit doloremque atque vero ex nesciunt nam
-        quibusdam. Facilis, impedit libero debitis ipsam velit nulla ullam?
-        Deserunt ratione veritatis, itaque unde corrupti ea dolor reiciendis
-        maiores quae est non fugiat repellat debitis expedita cumque aperiam!
-        Reiciendis?
-      </Accordion>
-      <Accordion
-        heading="Learn C++"
-        open={itemOpen === 4}
-        toggle={() => setItemOpen((old) => (old === 4 ? 0 : 4))}
-      >
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias soluta
-        ab beatae nobis, odit animi. Optio tempore minus dicta dolores corporis,
-        dignissimos mollitia eveniet dolorem laboriosam, nostrum illo! Laborum,
-        saepe tempora quis dicta voluptatum repudiandae. Optio rem itaque id,
-        tempore officia, saepe laborum illum dolore tenetur excepturi culpa
-        quibusdam maxime.
-      </Accordion>
-    </article>
+    <div className="wrapper">
+      <Accordion.Root className="container">
+        {roadMap.map(({ heading, content }, idx) => (
+          <Accordion.Item key={idx} heading={heading}>
+            {content}
+          </Accordion.Item>
+        ))}
+      </Accordion.Root>
+
+      <Accordion.Root className="container" collapsible>
+        {roadMap.map(({ heading, content }, idx) => (
+          <Accordion.Item key={idx} heading={heading}>
+            {content}
+          </Accordion.Item>
+        ))}
+      </Accordion.Root>
+
+      <Accordion.Root className="container" type="multiple">
+        {roadMap.map(({ heading, content }, idx) => (
+          <Accordion.Item key={idx} heading={heading}>
+            {content}
+          </Accordion.Item>
+        ))}
+      </Accordion.Root>
+    </div>
   );
 };
 
